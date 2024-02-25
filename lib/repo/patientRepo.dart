@@ -31,9 +31,7 @@ class PatientRepo {
       PatientListModel model = PatientListModel.fromJson(responseBody);
       getContext().read<PatientProvider>().setPatientList(model);
     } else {
-      // NavigationUtils.goBack(getContext());
-      //    Map<String, dynamic> responseBody = jsonDecode(response.body);
-      // showToast(getContext(), responseBody["message"], Colors.red, Colors.red);
+    
     }
     return "";
   }
