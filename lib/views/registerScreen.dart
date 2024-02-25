@@ -35,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void maleincrementQuantity() {
     setState(() {
       malequantity++;
-       getContext().read<PatientProvider>().setMale(malequantity);
+      getContext().read<PatientProvider>().setMale(malequantity);
     });
   }
 
@@ -52,7 +52,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       femalequantity++;
       getContext().read<PatientProvider>().setFemale(femalequantity);
-
     });
   }
 
@@ -60,8 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (femalequantity > 1) {
       setState(() {
         femalequantity--;
-         getContext().read<PatientProvider>().setFemale(femalequantity);
-
+        getContext().read<PatientProvider>().setFemale(femalequantity);
       });
     }
   }
@@ -198,9 +196,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   CustomDropFiled(
                       items: ["Thrissur", "Kozhikode", "Ernakulam"],
-                      onSelected: (value) {
-                        
-                      },
+                      onSelected: (value) {},
                       hint: "Choose your Location",
                       height: 40.h),
                   SizedBox(
@@ -224,7 +220,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 .toList()
                             : [],
                         onSelected: (value) {
-                          getContext().read<PatientProvider>().setBranch(value.toString());
+                          getContext()
+                              .read<PatientProvider>()
+                              .setBranch(value.toString());
                         },
                         hint: "Select the branch",
                         height: 40.h);
@@ -266,7 +264,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           .toList()
                                       : [],
                                   onSelected: (value) {
-                                     getContext().read<PatientProvider>().setTratement(value.toString());
+                                    getContext()
+                                        .read<PatientProvider>()
+                                        .setTratement(value.toString());
                                   },
                                   hint: "Select the treatment",
                                   height: 40.h);
@@ -485,7 +485,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onTap: () {
                             paymentOption = 0;
                             setState(() {
-                             getContext().read<PatientProvider>().setPayment("CASH");
+                              getContext()
+                                  .read<PatientProvider>()
+                                  .setPayment("CASH");
                             });
                           },
                           child: Container(
@@ -493,8 +495,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             decoration: BoxDecoration(
                                 color: Colors.grey.shade100,
                                 border: Border.all(
-                                    color:
-                                        paymentOption == 0 ? green : white),
+                                    color: paymentOption == 0 ? green : white),
                                 borderRadius: BorderRadius.circular(10.r)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -520,7 +521,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onTap: () {
                             paymentOption = 1;
                             setState(() {
-                                getContext().read<PatientProvider>().setPayment("CARD");
+                              getContext()
+                                  .read<PatientProvider>()
+                                  .setPayment("CARD");
                             });
                           },
                           child: Container(
@@ -528,8 +531,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             decoration: BoxDecoration(
                                 color: Colors.grey.shade100,
                                 border: Border.all(
-                                    color:
-                                        paymentOption == 1 ? green : white),
+                                    color: paymentOption == 1 ? green : white),
                                 borderRadius: BorderRadius.circular(10.r)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -555,7 +557,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onTap: () {
                             paymentOption = 2;
                             setState(() {
-                              getContext().read<PatientProvider>().setPayment("UPI");
+                              getContext()
+                                  .read<PatientProvider>()
+                                  .setPayment("UPI");
                             });
                           },
                           child: Container(
@@ -563,8 +567,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             decoration: BoxDecoration(
                                 color: Colors.grey.shade100,
                                 border: Border.all(
-                                    color:
-                                        paymentOption == 2 ? green : white),
+                                    color: paymentOption == 2 ? green : white),
                                 borderRadius: BorderRadius.circular(10.r)),
                             child: Padding(
                               padding: const EdgeInsets.all(13.0),
@@ -710,9 +713,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   CustomDropFiled(
                       items: ["11. am", "12. pm", "4. pm"],
-                      onSelected: (value) {
-                         
-                      },
+                      onSelected: (value) {},
                       hint: "Choose time",
                       height: 40.h),
                   SizedBox(
@@ -721,42 +722,44 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   CustomButton(
                       text: "SAVE",
                       onpress: () async {
-                        if(balanceController.text.isEmpty){
-                          showToast(context, "Fields are required", Colors.black, white);
-                        }else{
-   await getContext()
-                            .read<PatientProvider>()
-                            .setName(nameController.text);
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setExecutive(nameController.text);
+                        if (balanceController.text.isEmpty) {
+                          showToast(context, "Fields are required",
+                              Colors.black, white);
+                        } else {
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setName(nameController.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setExecutive(nameController.text);
 
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setPhone(mobileController.text);
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setAddress(addressController.text);
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setTotalAmount(totalController.text);
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setDiscountAmount(discountController.text);
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setAdvanceAmount(advanceController.text);
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setBalanceAmount(balanceController.text);
-                        await getContext()
-                            .read<PatientProvider>()
-                            .setDate(_dateInput.text);
-                        await getContext().read<PatientProvider>().setId("21");
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setPhone(mobileController.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setAddress(addressController.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setTotalAmount(totalController.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setDiscountAmount(discountController.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setAdvanceAmount(advanceController.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setBalanceAmount(balanceController.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setDate(_dateInput.text);
+                          await getContext()
+                              .read<PatientProvider>()
+                              .setId("21");
 
-                        await getContext().read<PatientProvider>().Register();
+                          await getContext().read<PatientProvider>().Register();
                         }
-                     
                       },
                       context: context),
                   SizedBox(
