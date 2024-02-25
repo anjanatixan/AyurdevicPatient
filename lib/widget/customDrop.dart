@@ -33,8 +33,8 @@ class CustomDropFiled extends StatelessWidget {
               isDense: true,
               contentPadding: EdgeInsets.zero,
               border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade300),
-                  borderRadius: BorderRadius.circular(20)),
+                  borderSide: BorderSide(color: Colors.grey.shade200),
+                  borderRadius: BorderRadius.circular(10)),
               //Add more decoration as you want here
               //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
             ),
