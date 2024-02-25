@@ -5,6 +5,7 @@ import 'package:ayurvedic/helper/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'homePage.dart';
 import 'loginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -51,7 +52,7 @@ IsLogedIn(BuildContext context) async {
     });
   } else {
     Future.delayed(Duration(seconds: 1)).then((value) {
-     NavigationUtils.goNextFinishAll(context, LoginScreen());
+     NavigationUtils.goNextFinishAll(context, HomeScreen());
     });
   }
 }
